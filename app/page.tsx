@@ -9,6 +9,7 @@ import DotGrid from "@/components/dot-grid"
 import { VscHome, VscAccount, VscMail, VscCode, VscTools, VscGithub } from "react-icons/vsc"
 import ContactForm from "@/components/contact-form"
 import ProjectShowcase from "@/components/project-showcase"
+import EmailDebug from "@/components/email-debug"
 
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false)
@@ -415,6 +416,9 @@ export default function Portfolio() {
           </footer>
         </ScrollReveal>
       </div>
+
+      {/* Email Debug Component (development only) */}
+      <EmailDebug />
 
       {/* Dock Navigation */}
       <Dock items={dockItems} panelHeight={68} baseItemSize={50} magnification={70} distance={150} />
