@@ -10,14 +10,6 @@ This site highlights projects, skills, and achievements in a modern, minimal lay
 
 ---
 
-## 🔥 Preview
-
-![Website Preview](assets/img/preview.png)
-
-*(Replace `assets/img/preview.png` with an actual screenshot of your website.)*
-
----
-
 ## ✨ Features
 
 - Fully **responsive design** (desktop, tablet, mobile)
@@ -91,9 +83,9 @@ live-server
 
 ## 📬 Contact
 
-- **LinkedIn:** [Your LinkedIn URL]
-- **GitHub:** [Your GitHub Profile]
-- **Email:** [your@email.com]
+- **LinkedIn:** [http://www.linkedin.com/in/harsh-chavan-369522316/]
+- **GitHub:** [https://github.com/Xyerophyte]
+- **Email:** [harshabasaheb1@gmail.com]
 
 ---
 
