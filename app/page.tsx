@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import MagicBento from "@/components/magic-bento"
 import ScrollReveal from "@/components/scroll-reveal"
+import TypingAnimation from "@/components/typing-animation"
+import DecryptedText from "@/components/decrypted-text"
 import { Github, Linkedin, Mail, MapPin, Download, Phone } from "lucide-react"
 import Dock from "@/components/dock"
 import DotGrid from "@/components/dot-grid"
@@ -21,6 +23,15 @@ export default function Portfolio() {
   if (!mounted) {
     return null
   }
+
+  // Typing animation texts
+  const typingTexts = [
+    "Full Stack Developer",
+    "React & Next.js Expert",
+    "Backend Specialist",
+    "UI/UX Enthusiast",
+    "Problem Solver",
+  ]
 
   // Portfolio data for bento cards
   const portfolioCards = [
@@ -214,19 +225,32 @@ export default function Portfolio() {
           <div className="max-w-6xl mx-auto text-center">
             <ScrollReveal direction="fade" duration={1.2} delay={0}>
               <div className="mb-8">
-                <ScrollReveal direction="up" delay={0.3} duration={1}>
-                  <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                    <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                      Harsh Chavan
-                    </span>
+                <div className="mb-6">
+                  <h1 className="text-5xl md:text-7xl font-bold">
+                    <DecryptedText
+                      text="Harsh Chavan"
+                      className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
+                      delay={300}
+                      duration={2000}
+                      characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?"
+                    />
                   </h1>
-                </ScrollReveal>
-                <ScrollReveal direction="up" delay={0.5} duration={1}>
-                  <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    Full Stack Developer crafting exceptional digital experiences with modern technologies
+                </div>
+                <ScrollReveal direction="up" delay={2.5} duration={1}>
+                  <div className="text-xl md:text-2xl text-gray-300 mb-2 min-h-[2.5rem] flex items-center justify-center">
+                    <TypingAnimation
+                      texts={typingTexts}
+                      speed={100}
+                      deleteSpeed={50}
+                      pauseDuration={2000}
+                      className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold"
+                    />
+                  </div>
+                  <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+                    Crafting exceptional digital experiences with modern technologies
                   </p>
                 </ScrollReveal>
-                <ScrollReveal direction="up" delay={0.7} duration={1}>
+                <ScrollReveal direction="up" delay={2.8} duration={1}>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button
                       onClick={() => scrollToSection("contact")}
