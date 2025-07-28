@@ -375,8 +375,8 @@ export default function Portfolio() {
                   </div>
 
                   <div className="pt-6">
-                    <h4 className="text-lg font-semibold mb-4">Connect with me</h4>
-                    <div className="flex gap-4">
+                    <h4 className="text-lg font-semibold mb-4 text-center">Connect with me</h4>
+                    <div className="flex gap-4 justify-center">
                       <a
                         href="https://github.com/Xyerophyte"
                         target="_blank"
