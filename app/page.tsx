@@ -7,6 +7,8 @@ import { Github, Linkedin, Mail, MapPin, Download, Phone } from "lucide-react"
 import Dock from "@/components/dock"
 import DotGrid from "@/components/dot-grid"
 import { VscHome, VscAccount, VscMail, VscCode, VscTools, VscGithub } from "react-icons/vsc"
+import ContactForm from "@/components/contact-form"
+import ProjectShowcase from "@/components/project-showcase"
 
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false)
@@ -145,6 +147,15 @@ export default function Portfolio() {
     }
   }
 
+  // Add this function near the top of the component
+  const downloadResume = () => {
+    // Create a link to your resume file
+    const link = document.createElement("a")
+    link.href = "/resume/harsh-chavan-resume.pdf" // Add your resume to public/resume/
+    link.download = "Harsh-Chavan-Resume.pdf"
+    link.click()
+  }
+
   // Dock items configuration
   const dockItems = [
     {
@@ -222,7 +233,10 @@ export default function Portfolio() {
                     >
                       Get In Touch
                     </button>
-                    <button className="border border-purple-500/30 hover:border-purple-500 px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2">
+                    <button
+                      onClick={downloadResume}
+                      className="border border-purple-500/30 hover:border-purple-500 px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
+                    >
                       <Download size={16} />
                       Download Resume
                     </button>
@@ -299,82 +313,94 @@ export default function Portfolio() {
             </div>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.2} duration={1}>
-            <MagicBento
-              cardData={projectCards}
-              enableStars={true}
-              enableSpotlight={true}
-              enableBorderGlow={true}
-              enableTilt={true}
-              enableMagnetism={true}
-              clickEffect={true}
-              glowColor="255, 132, 0"
-            />
+            <ProjectShowcase />
           </ScrollReveal>
         </section>
 
         {/* Contact Section */}
         <section id="contact" className="py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto">
             <ScrollReveal direction="up" duration={0.8}>
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Let's Work Together
-              </h2>
-              <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
-                I'm always interested in new opportunities and exciting projects. Let's discuss how we can bring your
-                ideas to life.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.2} duration={0.8}>
-              <div className="grid md:grid-cols-3 gap-8 mb-12">
-                <ScrollReveal direction="left" delay={0.1} duration={0.8}>
-                  <div className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 backdrop-blur-sm">
-                    <Mail className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">Email</h3>
-                    <p className="text-gray-400">harshabasaheb1@gmail.com</p>
-                  </div>
-                </ScrollReveal>
-                <ScrollReveal direction="up" delay={0.2} duration={0.8}>
-                  <div className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 backdrop-blur-sm">
-                    <Phone className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                    <p className="text-gray-400">+971 502808641</p>
-                  </div>
-                </ScrollReveal>
-                <ScrollReveal direction="right" delay={0.3} duration={0.8}>
-                  <div className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 backdrop-blur-sm">
-                    <MapPin className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">Location</h3>
-                    <p className="text-gray-400">Dubai, United Arab Emirates</p>
-                  </div>
-                </ScrollReveal>
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Let's Work Together
+                </h2>
+                <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
+                  I'm always interested in new opportunities and exciting projects. Let's discuss how we can bring your
+                  ideas to life.
+                </p>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal direction="up" delay={0.4} duration={0.8}>
-              <div className="flex justify-center space-x-6">
-                <a
-                  href="https://github.com/Xyerophyte"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Github size={24} />
-                </a>
-                <a
-                  href="http://www.linkedin.com/in/harsh-chavan-369522316/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Linkedin size={24} />
-                </a>
-                <a
-                  href="mailto:harshabasaheb1@gmail.com"
-                  className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Mail size={24} />
-                </a>
+            <ScrollReveal direction="up" delay={0.2} duration={0.8}>
+              <div className="grid lg:grid-cols-2 gap-12 items-start">
+                {/* Contact Form */}
+                <div>
+                  <h3 className="text-2xl font-semibold mb-6">Send me a message</h3>
+                  <ContactForm />
+                </div>
+
+                {/* Contact Info */}
+                <div className="space-y-8">
+                  <h3 className="text-2xl font-semibold mb-6">Get in touch</h3>
+
+                  <div className="space-y-6">
+                    <ScrollReveal direction="left" delay={0.1} duration={0.8}>
+                      <div className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 backdrop-blur-sm">
+                        <Mail className="w-8 h-8 text-purple-400 mb-4" />
+                        <h4 className="text-lg font-semibold mb-2">Email</h4>
+                        <p className="text-gray-400">harshabasaheb1@gmail.com</p>
+                        <p className="text-sm text-gray-500 mt-1">I typically respond within 24 hours</p>
+                      </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal direction="left" delay={0.2} duration={0.8}>
+                      <div className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 backdrop-blur-sm">
+                        <Phone className="w-8 h-8 text-purple-400 mb-4" />
+                        <h4 className="text-lg font-semibold mb-2">Phone</h4>
+                        <p className="text-gray-400">+971 502808641</p>
+                        <p className="text-sm text-gray-500 mt-1">Available Mon-Fri, 9 AM - 6 PM GST</p>
+                      </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal direction="left" delay={0.3} duration={0.8}>
+                      <div className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800 backdrop-blur-sm">
+                        <MapPin className="w-8 h-8 text-purple-400 mb-4" />
+                        <h4 className="text-lg font-semibold mb-2">Location</h4>
+                        <p className="text-gray-400">Dubai, United Arab Emirates</p>
+                        <p className="text-sm text-gray-500 mt-1">Open to remote work worldwide</p>
+                      </div>
+                    </ScrollReveal>
+                  </div>
+
+                  <div className="pt-6">
+                    <h4 className="text-lg font-semibold mb-4">Connect with me</h4>
+                    <div className="flex gap-4">
+                      <a
+                        href="https://github.com/Xyerophyte"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
+                      >
+                        <Github size={24} />
+                      </a>
+                      <a
+                        href="http://www.linkedin.com/in/harsh-chavan-369522316/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
+                      >
+                        <Linkedin size={24} />
+                      </a>
+                      <a
+                        href="mailto:harshabasaheb1@gmail.com"
+                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
+                      >
+                        <Mail size={24} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
           </div>
