@@ -5,6 +5,7 @@ import MagicBento from "@/components/magic-bento"
 import ScrollReveal from "@/components/scroll-reveal"
 import TypingAnimation from "@/components/typing-animation"
 import DecryptedText from "@/components/decrypted-text"
+import CustomCursor from "@/components/custom-cursor"
 import { Github, Linkedin, Mail, MapPin, Download, Phone } from "lucide-react"
 import Dock from "@/components/dock"
 import DotGrid from "@/components/dot-grid"
@@ -204,6 +205,9 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white relative">
+      {/* Custom Cursor */}
+      <CustomCursor />
+
       {/* Interactive Dot Grid Background */}
       <DotGrid
         dotSize={4}
@@ -254,13 +258,13 @@ export default function Portfolio() {
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button
                       onClick={() => scrollToSection("contact")}
-                      className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     >
                       Get In Touch
                     </button>
                     <button
                       onClick={downloadResume}
-                      className="border border-purple-500/30 hover:border-purple-500 px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
+                      className="border border-purple-500/30 hover:border-purple-500 px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 cursor-pointer"
                     >
                       <Download size={16} />
                       Download Resume
@@ -405,7 +409,7 @@ export default function Portfolio() {
                         href="https://github.com/Xyerophyte"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
+                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm cursor-pointer"
                       >
                         <Github size={24} />
                       </a>
@@ -413,13 +417,13 @@ export default function Portfolio() {
                         href="http://www.linkedin.com/in/harsh-chavan-369522316/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
+                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm cursor-pointer"
                       >
                         <Linkedin size={24} />
                       </a>
                       <a
                         href="mailto:harshabasaheb1@gmail.com"
-                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
+                        className="bg-gray-900/50 hover:bg-gray-800/50 p-4 rounded-full border border-gray-800 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm cursor-pointer"
                       >
                         <Mail size={24} />
                       </a>
