@@ -174,18 +174,6 @@ export default function ProjectShowcase() {
         </div>
       )}
 
-      {/* All Projects Grid */}
-      <div>
-        <h3 className="text-xl font-semibold mb-6 text-center">
-          {selectedCategory === "All" ? "All Projects" : `${selectedCategory} Projects`}
-        </h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} onSelect={setSelectedProject} />
-          ))}
-        </div>
-      </div>
-
       {/* Project Modal */}
       {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </div>
