@@ -28,9 +28,15 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
   const moveCursor = useCallback((x: number, y: number) => {
     if (!cursorRef.current) return;
-    // Use GSAP with killTweensOf to avoid animation queue buildup
-    gsap.killTweensOf(cursorRef.current);
-    gsap.set(cursorRef.current, { x, y });
+    // Only kill position tweens (x, y) to preserve rotation animation
+    gsap.killTweensOf(cursorRef.current, "x,y");
+    // Use to() instead of set() to maintain smooth movement while preserving rotation
+    gsap.to(cursorRef.current, {
+      x,
+      y,
+      duration: 0.1,
+      ease: "power3.out",
+    });
   }, []);
 
   useEffect(() => {
