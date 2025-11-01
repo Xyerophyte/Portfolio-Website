@@ -1,7 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend only if API key exists (prevents build errors)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,6 +28,16 @@ export async function POST(request: NextRequest) {
     console.log(`Message: ${message}`)
     console.log(`Time: ${new Date().toLocaleString()}`)
     console.log("================================")
+
+    // Check if Resend is configured
+    if (!resend) {
+      return NextResponse.json(
+        {
+          error: "Email service is not configured. Please contact me directly at harshabasaheb1@gmail.com",
+        },
+        { status: 503 },
+      )
+    }
 
     let emailSentToOwner = false
     let autoReplySent = false
