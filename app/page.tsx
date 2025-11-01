@@ -258,20 +258,20 @@ export default function Portfolio() {
         {/* Hero Section */}
         <section id="hero" className="pt-32 pb-20 px-6">
           <div className="max-w-6xl mx-auto text-center">
-            <ScrollReveal direction="fade" duration={1.2} delay={0}>
+            <ScrollReveal direction="fade" duration={0.6} delay={0}>
               <div className="mb-8">
                 <div className="mb-6">
                   <h1 className="text-5xl md:text-7xl font-bold">
                     <DecryptedText
                       text="Harsh Chavan"
                       className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
-                      delay={300}
-                      duration={2000}
+                      delay={100}
+                      duration={3500}
                       characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?"
                     />
                   </h1>
                 </div>
-                <ScrollReveal direction="up" delay={2.5} duration={1}>
+                <ScrollReveal direction="up" delay={0.4} duration={0.6}>
                   <div className="text-xl md:text-2xl text-gray-300 mb-2 min-h-[2.5rem] flex items-center justify-center">
                     <TypingAnimation
                       texts={typingTexts}
@@ -285,7 +285,7 @@ export default function Portfolio() {
                     Crafting exceptional digital experiences with modern technologies
                   </p>
                 </ScrollReveal>
-                <ScrollReveal direction="up" delay={2.8} duration={1}>
+                <ScrollReveal direction="up" delay={0.6} duration={0.6}>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button
                       onClick={() => scrollToSection("contact")}

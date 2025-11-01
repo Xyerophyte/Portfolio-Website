@@ -30,6 +30,8 @@ export default function DecryptedText({
       let iteration = 0
       const targetLength = text.length
 
+      // Enhanced animation with smoother progression
+      const intervalDuration = Math.max(20, duration / targetLength / 4) // Slower, smoother progression
       intervalRef.current = setInterval(
         () => {
           setDisplayText((prev) => {
@@ -38,7 +40,11 @@ export default function DecryptedText({
               .map((char, index) => {
                 if (char === " ") return " "
 
-                if (index < iteration) {
+                // Smoother reveal with easing effect - characters reveal progressively faster
+                const revealProgress = index / targetLength
+                const adjustedIteration = iteration * (1 + revealProgress * 0.3)
+                
+                if (index < adjustedIteration - 0.5) {
                   return text[index]
                 }
 
@@ -55,9 +61,10 @@ export default function DecryptedText({
             setIsDecrypting(false)
           }
 
-          iteration += 1 / 3
+          // Slower iteration for more elegant reveal
+          iteration += 0.15
         },
-        duration / targetLength / 3,
+        intervalDuration,
       )
     }, delay)
 
