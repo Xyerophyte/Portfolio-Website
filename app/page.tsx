@@ -314,10 +314,14 @@ export default function Portfolio() {
               <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 About Me
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                Passionate developer with expertise in modern web technologies and a love for creating beautiful,
-                functional applications.
-              </p>
+              <div className="text-gray-400 max-w-3xl mx-auto space-y-4">
+                <p className="text-base md:text-lg leading-relaxed">
+                  I'm Harsh Chavan, a B.E. student in Mathematics and Computing at BITS Pilani. I'm deeply interested in how mathematical reasoning, structured thinking, and computational logic come together to solve complex, uncertain problems — particularly in markets and decision systems.
+                </p>
+                <p className="text-base md:text-lg leading-relaxed">
+                  I enjoy working on intellectually challenging ideas, whether through probability, game theory, or optimization. My focus is on developing a strong foundation in analytical thinking and creative problem solving, with the long-term goal of working in environments that value precision, curiosity, and rigorous thought.
+                </p>
+              </div>
             </div>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.2} duration={1} threshold={0.2}>
