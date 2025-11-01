@@ -90,8 +90,14 @@ export default function Portfolio() {
     },
     {
       color: "#060010",
-      title: "Programming & Technical Skills",
-      description: "C++, Python, Java, JavaScript (and frameworks), algorithmic thinking, time complexity, data structures, recursion, dynamic programming, simulation & backtesting, debugging, performance optimization, Git, Linux/Unix CLI",
+      title: "Programming Languages & Frameworks",
+      description: "C++, Python, Java, JavaScript and modern frameworks, object-oriented programming, functional programming paradigms, code optimization and best practices",
+      label: "Languages",
+    },
+    {
+      color: "#060010",
+      title: "Algorithms & System Design",
+      description: "Algorithmic thinking, time & space complexity, data structures, recursion, dynamic programming, simulation & backtesting strategies, debugging, performance optimization, Git, Linux/Unix CLI",
       label: "Technical",
     },
     {
