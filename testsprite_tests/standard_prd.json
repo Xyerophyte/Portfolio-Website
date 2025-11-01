@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "project": "Harsh Chavan Portfolio Website",
+    "date": "2025-10-29",
+    "prepared_by": "Software Development Manager"
+  },
+  "product_overview": "A modern, interactive portfolio website showcasing the developer's skills, projects, and contact information, built with Next.js 14 and featuring advanced animations and UI effects.",
+  "core_goals": [
+    "Provide an engaging and visually appealing personal portfolio to showcase skills and projects.",
+    "Ensure responsive design for optimal viewing on all devices including mobile, tablet, and desktop.",
+    "Implement smooth and modern animations to enhance user experience without performance degradation.",
+    "Offer a functional contact form integrated with an email service for direct communication.",
+    "Optimize SEO for better search engine visibility and accessibility."
+  ],
+  "key_features": [
+    "Custom TargetCursor with interactive corner brackets and smooth animations that replace the default cursor.",
+    "Magic Bento Grid: an interactive card layout with hover effects, magnetism, and particle animations for portfolio and skill display.",
+    "Scroll Reveal animations that trigger elements as they scroll into view for dynamic page interaction.",
+    "Typing Animation and Decrypted Text effects for dynamic role/title presentation.",
+    "Dock Navigation emulating macOS style with hover effects for intuitive site navigation.",
+    "Dot Grid Background that interacts with cursor proximity for subtle dynamic background effects.",
+    "Contact Form with validation and functional email integration using Resend API.",
+    "Project Showcase section highlighting featured projects with details and clickable links.",
+    "Responsive and mobile-first design with an elegant dark theme and gradient accents.",
+    "SEO optimization including meta tags, structured data, sitemap, and robots.txt for enhanced discoverability."
+  ],
+  "user_flow_summary": [
+    "User lands on the Home page to see an introduction with dynamic typing animation and calls-to-action in the Hero Section.",
+    "User scrolls down to explore About Section presented in an interactive Bento Grid layout with hover and particle animations.",
+    "User navigates through Skills and Projects Sections with smooth scroll and scroll reveal animations enhancing content engagement.",
+    "User accesses the Dock Navigation to jump between sections or external social links such as GitHub and LinkedIn.",
+    "User fills and submits the Contact Form with form validation and receives confirmation of successful submission via integration with the Resend API.",
+    "User can download the Resume and interact with social links available on the site."
+  ],
+  "validation_criteria": [
+    "All interactive animations such as TargetCursor, Magic Bento Grid, typing, and scroll reveal run smoothly across supported browsers.",
+    "Contact Form validates input fields correctly and prevents submission of invalid data.",
+    "Emails sent through the Contact Form are successfully delivered via Resend API and appropriate success/failure feedback is shown to the user.",
+    "Site layout is fully responsive and visually consistent on all supported devices and screen sizes.",
+    "SEO best practices are implemented: meta tags exist on pages, sitemap and robots.txt file are present and correctly configured.",
+    "Dark theme styling is consistently applied and toggle or preference-based dark mode is stable across sessions."
+  ],
+  "code_summary": {
+    "tech_stack": {
+      "framework": "Next.js 14 (App Router)",
+      "language": "TypeScript",
+      "ui_library": "React 18",
+      "styling": "Tailwind CSS",
+      "animations": [
+        "GSAP",
+        "Framer Motion"
+      ],
+      "ui_components": "shadcn/ui (Radix UI)",
+      "email_service": "Resend API",
+      "deployment": "Vercel",
+      "package_manager": "pnpm"
+    },
+    "features": [
+      "Custom TargetCursor - Interactive cursor with corner brackets and animations",
+      "Magic Bento Grid - Interactive card layout with hover effects, magnetism, and particle animations",
+      "Scroll Reveal - Elements animate as you scroll into view",
+      "Typing Animation - Dynamic text typing effect for role titles",
+      "Decrypted Text - Text decryption animation effect",
+      "Dock Navigation - macOS-style dock with hover effects",
+      "Dot Grid Background - Interactive dot grid that reacts to cursor proximity",
+      "Contact Form - Functional email system with Resend API integration and validation",
+      "Project Showcase - Display of featured projects with details and links",
+      "Responsive Design - Mobile-first design optimized for all screen sizes",
+      "Dark Theme - Elegant dark mode with gradient accents",
+      "SEO Optimization - Comprehensive meta tags, structured data, sitemap, and robots.txt",
+      "Smooth Scrolling - Section navigation with smooth scroll behavior",
+      "Social Links - Integration with GitHub, LinkedIn, and email",
+      "Resume Download - Download resume functionality"
+    ],
+    "main_components": [
+      "TargetCursor",
+      "MagicBento",
+      "ScrollReveal",
+      "TypingAnimation",
+      "DecryptedText",
+      "Dock",
+      "DotGrid",
+      "ContactForm",
+      "ProjectShowcase"
+    ],
+    "api_routes": [
+      "/api/contact - POST endpoint for contact form submissions",
+      "/api/test-email - Test email endpoint (if exists)"
+    ],
+    "pages": [
+      "Home page (/) - Main portfolio page with all sections"
+    ],
+    "sections": [
+      "Hero Section - Introduction with name, typing animation, and CTA buttons",
+      "About Section - Portfolio cards in bento grid layout",
+      "Skills Section - Technology stack cards",
+      "Projects Section - Featured projects showcase",
+      "Contact Section - Contact form and contact information"
+    ]
+  }
+}

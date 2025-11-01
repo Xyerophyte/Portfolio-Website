@@ -20,8 +20,16 @@ export default function Portfolio() {
     setMounted(true)
   }, [])
 
+  // Return a loading state instead of null to avoid hydration issues
   if (!mounted) {
-    return null
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading...</p>
+        </div>
+      </div>
+    )
   }
 
   // Typing animation texts
@@ -161,11 +169,31 @@ export default function Portfolio() {
 
   // Add this function near the top of the component
   const downloadResume = () => {
-    // Create a link to your resume file
-    const link = document.createElement("a")
-    link.href = "/resume/harsh-chavan-resume.pdf" // Add your resume to public/resume/
-    link.download = "Harsh-Chavan-Resume.pdf"
-    link.click()
+    try {
+      // Create a link to your resume file
+      const link = document.createElement("a")
+      link.href = "/resume/harsh-chavan-resume.pdf"
+      link.download = "Harsh-Chavan-Resume.pdf"
+      link.target = "_blank"
+      
+      // Check if file exists by trying to fetch it
+      fetch(link.href, { method: "HEAD" })
+        .then((response) => {
+          if (response.ok) {
+            link.click()
+          } else {
+            // Resume file doesn't exist, show message to user
+            alert("Resume file is not available. Please contact me directly at harshabasaheb1@gmail.com")
+          }
+        })
+        .catch(() => {
+          // Network error or file doesn't exist
+          alert("Resume file is not available. Please contact me directly at harshabasaheb1@gmail.com")
+        })
+    } catch (error) {
+      console.error("Error downloading resume:", error)
+      alert("Unable to download resume. Please contact me directly at harshabasaheb1@gmail.com")
+    }
   }
 
   // Dock items configuration

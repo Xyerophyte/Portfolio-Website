@@ -28,12 +28,9 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
   const moveCursor = useCallback((x: number, y: number) => {
     if (!cursorRef.current) return;
-    gsap.to(cursorRef.current, {
-      x,
-      y,
-      duration: 0.1,
-      ease: "power3.out",
-    });
+    // Use GSAP with killTweensOf to avoid animation queue buildup
+    gsap.killTweensOf(cursorRef.current);
+    gsap.set(cursorRef.current, { x, y });
   }, []);
 
   useEffect(() => {
@@ -97,26 +94,37 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
     createSpinTimeline();
 
-    const moveHandler = (e: MouseEvent) => moveCursor(e.clientX, e.clientY);
-    window.addEventListener("mousemove", moveHandler);
+    // Throttle mousemove for better performance
+    let rafId: number | null = null;
+    const moveHandler = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        moveCursor(e.clientX, e.clientY);
+        rafId = null;
+      });
+    };
+    window.addEventListener("mousemove", moveHandler, { passive: true });
 
+    // Throttle scroll handler for better performance
+    let scrollRafId: number | null = null;
     const scrollHandler = () => {
-      if (!activeTarget || !cursorRef.current) return;
+      if (!activeTarget || !cursorRef.current || scrollRafId) return;
       
-      const mouseX = gsap.getProperty(cursorRef.current, "x") as number;
-      const mouseY = gsap.getProperty(cursorRef.current, "y") as number;
-      
-      const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
-      const isStillOverTarget = elementUnderMouse && (
-        elementUnderMouse === activeTarget || 
-        elementUnderMouse.closest(targetSelector) === activeTarget
-      );
-      
-      if (!isStillOverTarget) {
-        if (currentLeaveHandler) {
+      scrollRafId = requestAnimationFrame(() => {
+        const mouseX = gsap.getProperty(cursorRef.current!, "x") as number;
+        const mouseY = gsap.getProperty(cursorRef.current!, "y") as number;
+        
+        const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
+        const isStillOverTarget = elementUnderMouse && (
+          elementUnderMouse === activeTarget || 
+          elementUnderMouse.closest(targetSelector) === activeTarget
+        );
+        
+        if (!isStillOverTarget && currentLeaveHandler) {
           currentLeaveHandler();
         }
-      }
+        scrollRafId = null;
+      });
     };
 
     window.addEventListener("scroll", scrollHandler, { passive: true });
@@ -309,6 +317,13 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       document.removeEventListener("mouseenter", hideCursorOnHover);
       document.removeEventListener("mouseover", hideCursorOnHover);
       document.removeEventListener("mousemove", hideCursorOnHover);
+
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+      if (scrollRafId) {
+        cancelAnimationFrame(scrollRafId);
+      }
 
       if (activeTarget) {
         cleanupTarget(activeTarget);

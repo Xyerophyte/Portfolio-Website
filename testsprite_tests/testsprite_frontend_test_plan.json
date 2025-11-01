@@ -1,0 +1,460 @@
+[
+  {
+    "id": "TC001",
+    "title": "Verify Custom TargetCursor appearance and behavior",
+    "description": "Check the Custom TargetCursor renders correctly with interactive corner brackets and smooth animations replacing the default cursor across supported browsers and devices.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the website on desktop and mobile browsers."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the default cursor is replaced by the custom TargetCursor."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that interactive corner brackets appear on the cursor."
+      },
+      {
+        "type": "action",
+        "description": "Move cursor across different UI elements and observe cursor animation."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure cursor animations are smooth without lag or stutter."
+      },
+      {
+        "type": "action",
+        "description": "Test TargetCursor responsiveness on different screen sizes."
+      },
+      {
+        "type": "assertion",
+        "description": "TargetCursor behavior remains consistent and visually correct on all devices."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Validate Magic Bento Grid interactive card hover and particle animations",
+    "description": "Ensure the Magic Bento Grid shows correct interactive card layout with magnetism effects, hover animations, and particle effects onAbout and Skills sections.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the About Section and observe the Bento Grid layout."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify cards display correctly with expected layout and content."
+      },
+      {
+        "type": "action",
+        "description": "Hover over each card in the grid."
+      },
+      {
+        "type": "assertion",
+        "description": "Check hover magnetism effect pulls the card towards the cursor smoothly."
+      },
+      {
+        "type": "assertion",
+        "description": "Particle animations trigger on hover and animate correctly."
+      },
+      {
+        "type": "action",
+        "description": "Repeat steps on the Skills Section cards."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure consistency of hover effects and particle animations on skills cards."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Verify Scroll Reveal animations trigger correctly on scroll",
+    "description": "Confirm UI elements animate as they scroll into view across all sections with no performance degradation.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load the home page and slowly scroll down through all sections."
+      },
+      {
+        "type": "assertion",
+        "description": "Observe that designated elements trigger Scroll Reveal animations when entering viewport."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure animations run smoothly without jank or delay."
+      },
+      {
+        "type": "action",
+        "description": "Scroll back up and down rapidly."
+      },
+      {
+        "type": "assertion",
+        "description": "Check animations behave consistently even on quick or repeated scrolling."
+      },
+      {
+        "type": "action",
+        "description": "Test on mobile devices with various resolutions."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify Scroll Reveal animations perform well on mobile browsers."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Test Typing Animation and Decrypted Text dynamic presentation",
+    "description": "Validate dynamic typing effect for role/title and decrypted text animation on Hero section appears and cycles correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the homepage and locate the role/title presentation area."
+      },
+      {
+        "type": "assertion",
+        "description": "Typing animation starts automatically, typing the role/title text character by character."
+      },
+      {
+        "type": "assertion",
+        "description": "Decrypted Text effect runs as expected, revealing text with decryption animation."
+      },
+      {
+        "type": "action",
+        "description": "Allow the animations to cycle through multiple roles/titles if applicable."
+      },
+      {
+        "type": "assertion",
+        "description": "Typing and Decrypted Text animations loop smoothly without freezing or glitching."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Verify Dock Navigation usability and macOS style hover effects",
+    "description": "Ensure Dock Navigation renders correctly, shows macOS style icons and hover effects, and navigates to intended sections or external links.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Locate the Dock Navigation component at the bottom of the page."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all intended navigation icons (Home, Skills, Projects, Contact, GitHub, LinkedIn) appear correctly."
+      },
+      {
+        "type": "action",
+        "description": "Hover mouse pointer over each icon."
+      },
+      {
+        "type": "assertion",
+        "description": "Hover effects mimic macOS style magnification or highlight animations."
+      },
+      {
+        "type": "action",
+        "description": "Click on each internal navigation icon."
+      },
+      {
+        "type": "assertion",
+        "description": "Page smoothly scrolls or jumps to the corresponding section."
+      },
+      {
+        "type": "action",
+        "description": "Click on external social icons for GitHub and LinkedIn."
+      },
+      {
+        "type": "assertion",
+        "description": "New tabs open with correct social profile URLs."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Validate Dot Grid Background cursor interaction",
+    "description": "Check that the dot grid background interacts subtly with cursor proximity and maintains smooth animations without performance impact.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Observe the dot grid background on homepage and inner pages if available."
+      },
+      {
+        "type": "action",
+        "description": "Move the cursor slowly and quickly across various regions of the background."
+      },
+      {
+        "type": "assertion",
+        "description": "Dots subtly react to cursor proximity with smooth animations."
+      },
+      {
+        "type": "assertion",
+        "description": "No flickering or animation glitches occur during interaction."
+      },
+      {
+        "type": "action",
+        "description": "Test responsiveness and performance impact on desktop and mobile devices."
+      },
+      {
+        "type": "assertion",
+        "description": "Background animations do not degrade site performance or user experience."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Test Contact Form validation and error handling",
+    "description": "Ensure the contact form fields validate input correctly, block invalid submissions, and display user friendly error messages.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Contact Section."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to submit the form with all fields empty."
+      },
+      {
+        "type": "assertion",
+        "description": "Form prevents submission and shows validation error messages for required fields."
+      },
+      {
+        "type": "action",
+        "description": "Enter invalid email address format and valid other inputs."
+      },
+      {
+        "type": "assertion",
+        "description": "Form prevents submission and displays email format error message."
+      },
+      {
+        "type": "action",
+        "description": "Fill all fields with valid data."
+      },
+      {
+        "type": "assertion",
+        "description": "No validation errors are shown and submit button is enabled."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Verify Contact Form email submission via Resend API",
+    "description": "Test that submitting the contact form sends an email through the Resend API and displays appropriate success or failure feedback to the user.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Fill contact form with valid inputs."
+      },
+      {
+        "type": "action",
+        "description": "Submit the form."
+      },
+      {
+        "type": "assertion",
+        "description": "Wait for response from /api/contact endpoint."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify success message is displayed on successful email delivery."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify failure message is shown if API fails or network error occurs."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Verify responsive design and layout consistency",
+    "description": "Ensure the site layout adapts correctly and remains visually consistent on different screen sizes including mobile, tablet, and desktop.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the website on devices or simulators with screen widths: 320px, 768px, 1024px, 1440px."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that all sections and UI components scale and reposition properly without overflow or clipping."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify menus, grids, animations and text remain readable and accessible."
+      },
+      {
+        "type": "action",
+        "description": "Rotate devices (if applicable) and check UI reflows accordingly."
+      },
+      {
+        "type": "assertion",
+        "description": "No layout breakages occur on orientation change."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Test SEO meta tags, structured data, sitemap, and robots.txt configuration",
+    "description": "Check for comprehensive SEO implementation via meta tags on pages, existence and correctness of structured data, and presence of sitemap.xml and robots.txt files.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the homepage source code."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify meta tags for title, description, keywords, and viewport exist and contain appropriate content."
+      },
+      {
+        "type": "assertion",
+        "description": "Check for structured data script tags (JSON-LD) present and correctly formed."
+      },
+      {
+        "type": "action",
+        "description": "Access /sitemap.xml via browser or API call."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm sitemap.xml exists and lists all relevant pages."
+      },
+      {
+        "type": "action",
+        "description": "Access /robots.txt file."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify robots.txt exists and is properly configured to allow indexing of public pages."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Verify dark theme styling consistency and mode persistence",
+    "description": "Confirm the dark theme styling is applied consistently across all pages and UI components, and that dark mode preference is stable across sessions.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load the website and verify dark theme is default or correctly toggled based on user preference."
+      },
+      {
+        "type": "assertion",
+        "description": "Check colors, gradients, and UI components reflect dark theme design as per specs."
+      },
+      {
+        "type": "action",
+        "description": "Toggle dark mode if toggle option provided."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify smooth transition and full theme switch."
+      },
+      {
+        "type": "action",
+        "description": "Reload the page or close and reopen the browser."
+      },
+      {
+        "type": "assertion",
+        "description": "Dark mode preference persists and theme loads accordingly."
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Validate Project Showcase section project details and links",
+    "description": "Ensure featured projects display correct details including title, description, technologies, and clickable links that open appropriate project URLs.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Scroll to the Projects Section."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify each project card shows the project title, summary, and technology stack."
+      },
+      {
+        "type": "action",
+        "description": "Click on project links or buttons."
+      },
+      {
+        "type": "assertion",
+        "description": "Links open the respective project pages in a new tab or correct routing."
+      },
+      {
+        "type": "assertion",
+        "description": "No broken or dead links exist."
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Check Resume download functionality",
+    "description": "Verify that the resume download link or button triggers file download and the file is accessible and correctly named.",
+    "category": "functional",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Locate the Resume download button or link on the site."
+      },
+      {
+        "type": "action",
+        "description": "Click the download button/link."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure the resume file is downloaded."
+      },
+      {
+        "type": "assertion",
+        "description": "Open the downloaded file to confirm it is the correct resume document."
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Verify smooth scrolling behavior on navigation",
+    "description": "Ensure clicking navigation links (via Dock or other section links) causes smooth scrolling transitions to targeted sections without jumpy behavior.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Click each internal navigation link in the Dock Navigation and other internal links."
+      },
+      {
+        "type": "assertion",
+        "description": "Page scrolls smoothly to the corresponding section."
+      },
+      {
+        "type": "action",
+        "description": "Rapidly switch between navigation links multiple times."
+      },
+      {
+        "type": "assertion",
+        "description": "Smooth scroll remains responsive without lag or locking."
+      }
+    ]
+  }
+]

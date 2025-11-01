@@ -38,12 +38,45 @@ export default function ContactForm() {
     }))
   }
 
+  const validateForm = (): string | null => {
+    if (!formData.name.trim()) {
+      return "Name is required"
+    }
+    if (!formData.email.trim()) {
+      return "Email is required"
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      return "Please enter a valid email address"
+    }
+    if (!formData.subject.trim()) {
+      return "Subject is required"
+    }
+    if (!formData.message.trim()) {
+      return "Message is required"
+    }
+    if (formData.message.trim().length < 10) {
+      return "Message must be at least 10 characters long"
+    }
+    return null
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Client-side validation
+    const validationError = validateForm()
+    if (validationError) {
+      setStatus({
+        type: "error",
+        message: validationError,
+      })
+      return
+    }
+
     setStatus({ type: "loading", message: "Sending message..." })
 
     try {
-      // Simulate API call - replace with your actual endpoint
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -52,19 +85,25 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       })
 
+      const data = await response.json()
+
       if (response.ok) {
         setStatus({
           type: "success",
-          message: "Message sent successfully! I'll get back to you soon.",
+          message: data.message || "Message sent successfully! I'll get back to you soon.",
         })
         setFormData({ name: "", email: "", subject: "", message: "" })
       } else {
-        throw new Error("Failed to send message")
+        setStatus({
+          type: "error",
+          message: data.error || data.message || "Failed to send message. Please try again or contact me directly.",
+        })
       }
     } catch (error) {
+      console.error("Contact form error:", error)
       setStatus({
         type: "error",
-        message: "Failed to send message. Please try again or contact me directly.",
+        message: "Network error. Please check your connection and try again, or contact me directly at harshabasaheb1@gmail.com",
       })
     }
   }

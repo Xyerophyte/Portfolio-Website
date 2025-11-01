@@ -1,0 +1,55 @@
+{
+  "tech_stack": {
+    "framework": "Next.js 14 (App Router)",
+    "language": "TypeScript",
+    "ui_library": "React 18",
+    "styling": "Tailwind CSS",
+    "animations": ["GSAP", "Framer Motion"],
+    "ui_components": "shadcn/ui (Radix UI)",
+    "email_service": "Resend API",
+    "deployment": "Vercel",
+    "package_manager": "pnpm"
+  },
+  "features": [
+    "Custom TargetCursor - Interactive cursor with corner brackets and animations",
+    "Magic Bento Grid - Interactive card layout with hover effects, magnetism, and particle animations",
+    "Scroll Reveal - Elements animate as you scroll into view",
+    "Typing Animation - Dynamic text typing effect for role titles",
+    "Decrypted Text - Text decryption animation effect",
+    "Dock Navigation - macOS-style dock with hover effects",
+    "Dot Grid Background - Interactive dot grid that reacts to cursor proximity",
+    "Contact Form - Functional email system with Resend API integration and validation",
+    "Project Showcase - Display of featured projects with details and links",
+    "Responsive Design - Mobile-first design optimized for all screen sizes",
+    "Dark Theme - Elegant dark mode with gradient accents",
+    "SEO Optimization - Comprehensive meta tags, structured data, sitemap, and robots.txt",
+    "Smooth Scrolling - Section navigation with smooth scroll behavior",
+    "Social Links - Integration with GitHub, LinkedIn, and email",
+    "Resume Download - Download resume functionality"
+  ],
+  "main_components": [
+    "TargetCursor",
+    "MagicBento",
+    "ScrollReveal",
+    "TypingAnimation",
+    "DecryptedText",
+    "Dock",
+    "DotGrid",
+    "ContactForm",
+    "ProjectShowcase"
+  ],
+  "api_routes": [
+    "/api/contact - POST endpoint for contact form submissions",
+    "/api/test-email - Test email endpoint (if exists)"
+  ],
+  "pages": [
+    "Home page (/) - Main portfolio page with all sections"
+  ],
+  "sections": [
+    "Hero Section - Introduction with name, typing animation, and CTA buttons",
+    "About Section - Portfolio cards in bento grid layout",
+    "Skills Section - Technology stack cards",
+    "Projects Section - Featured projects showcase",
+    "Contact Section - Contact form and contact information"
+  ]
+}

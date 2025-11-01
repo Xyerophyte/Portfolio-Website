@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "Portfolio-Website",
+    "projectPath": "C:\\Users\\harsh\\Downloads\\Portfolio-Website",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-PQQCWs4PsF2sOBYe7fl3LFiY5qxIVwhLZJ9q4rChSzoaUmdl9zykETFf1Yw1Rs5P7LGVwiyLdLFv6I1CoyAaBqxBz36H1DU9J_UubEsTOXVGeTKAE6r4eLikMlWum7dN28g"
+    }
+  },
+  "proxy": "http://6048f136-6897-450e-ab44-6e55bf00837a:B20YufOBnrhN47LVrnZwhpbSZlzyowxm@tun.testsprite.com:8080"
+}

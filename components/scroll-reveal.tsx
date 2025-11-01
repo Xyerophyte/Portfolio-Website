@@ -100,7 +100,7 @@ export default function ScrollReveal({
     return () => {
       observer.disconnect()
     }
-  }, [direction, delay, duration, distance, threshold, triggerOnce, isVisible])
+  }, [direction, delay, duration, distance, threshold, triggerOnce])
 
   return (
     <div ref={elementRef} className={className}>
