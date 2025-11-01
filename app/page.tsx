@@ -51,9 +51,9 @@ export default function Portfolio() {
     },
     {
       color: "#060010",
-      title: "React & Next.js",
-      description: "Expert in modern React patterns, hooks, and Next.js framework",
-      label: "Frontend",
+      title: "Aspiring Quant",
+      description: "Learning quantitative finance, algorithmic trading, and data analysis",
+      label: "Quantitative",
     },
     {
       color: "#060010",
@@ -63,7 +63,7 @@ export default function Portfolio() {
     },
     {
       color: "#060010",
-      title: "5+ Years Experience",
+      title: "Personal Experience",
       description: "Building production-ready applications for startups and enterprises",
       label: "Experience",
     },
