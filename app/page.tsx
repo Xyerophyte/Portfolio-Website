@@ -321,6 +321,9 @@ export default function Portfolio() {
                 <p className="text-base md:text-lg leading-relaxed">
                   I enjoy working on intellectually challenging ideas, whether through probability, game theory, or optimization. My focus is on developing a strong foundation in analytical thinking and creative problem solving, with the long-term goal of working in environments that value precision, curiosity, and rigorous thought.
                 </p>
+                <p className="text-base md:text-lg leading-relaxed">
+                  I'm someone who loves exploring, creating, and connecting. I'm most alive when I'm learning something new or working with people who bring different perspectives to the table. Whether it's playing any sport, jamming on any instrument, traveling, or diving into tech and space videos, I'm always chasing ideas that make me curious.
+                </p>
               </div>
             </div>
           </ScrollReveal>
