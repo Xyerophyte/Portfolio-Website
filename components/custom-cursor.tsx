@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import { gsap } from "gsap"
 import "./custom-cursor.css"
 
@@ -101,19 +101,27 @@ export default function CustomCursor() {
     }
   }
 
-  // Update osu-style trails
-  const updateTrails = () => {
+  // Update osu-style trails with proper cleanup
+  const updateTrails = useCallback(() => {
     const now = Date.now()
 
     // Remove old trail points (older than 500ms)
     trailPointsRef.current = trailPointsRef.current.filter((point) => now - point.timestamp < 500)
 
-    // Clear existing trails
-    trailsRef.current.forEach((trail) => trail.element.remove())
+    // Clear existing trails with proper DOM cleanup
+    trailsRef.current.forEach((trail) => {
+      if (trail.element?.parentNode) {
+        trail.element.parentNode.removeChild(trail.element)
+      }
+    })
     trailsRef.current = []
 
+    // Limit trail points to prevent unbounded growth
+    const MAX_TRAIL_POINTS = 20
+    const pointsToRender = trailPointsRef.current.slice(-MAX_TRAIL_POINTS)
+
     // Create new trails based on trail points
-    trailPointsRef.current.forEach((point, index) => {
+    pointsToRender.forEach((point, index) => {
       const age = now - point.timestamp
       const maxAge = 500
       const life = Math.max(0, 1 - age / maxAge)
@@ -125,7 +133,7 @@ export default function CustomCursor() {
         // Calculate size and opacity based on age and position in trail
         const sizeMultiplier = 0.3 + life * 0.7 // 0.3 to 1.0
         const opacityMultiplier = life * 0.6 // Fade out over time
-        const trailIndex = trailPointsRef.current.length - index - 1
+        const trailIndex = pointsToRender.length - index - 1
         const positionOpacity = Math.max(0.1, 1 - trailIndex * 0.08) // Fade based on position
 
         trail.style.cssText = `
@@ -134,9 +142,9 @@ export default function CustomCursor() {
           top: ${point.y - 6 * sizeMultiplier}px;
           width: ${12 * sizeMultiplier}px;
           height: ${12 * sizeMultiplier}px;
-          background: radial-gradient(circle, 
-            rgba(132, 0, 255, ${0.8 * opacityMultiplier * positionOpacity}) 0%, 
-            rgba(255, 0, 150, ${0.6 * opacityMultiplier * positionOpacity}) 50%, 
+          background: radial-gradient(circle,
+            rgba(132, 0, 255, ${0.8 * opacityMultiplier * positionOpacity}) 0%,
+            rgba(255, 0, 150, ${0.6 * opacityMultiplier * positionOpacity}) 50%,
             transparent 70%);
           border-radius: 50%;
           pointer-events: none;
@@ -155,10 +163,10 @@ export default function CustomCursor() {
         })
       }
     })
-  }
+  }, [])
 
-  // Update particles
-  const updateParticles = () => {
+  // Update particles with proper cleanup
+  const updateParticles = useCallback(() => {
     particlesRef.current = particlesRef.current.filter((particle) => {
       particle.x += particle.vx
       particle.y += particle.vy
@@ -168,7 +176,9 @@ export default function CustomCursor() {
       particle.life -= 1
 
       if (particle.life <= 0) {
-        particle.element.remove()
+        if (particle.element?.parentNode) {
+          particle.element.parentNode.removeChild(particle.element)
+        }
         return false
       }
 
@@ -182,13 +192,13 @@ export default function CustomCursor() {
 
       return true
     })
-  }
+  }, [])
 
   // Animation loop
-  const animate = () => {
+  const animate = useCallback(() => {
     const now = Date.now()
 
-    // Add particles when clicking
+    // Add particles when clicking (limit to 25 particles max)
     if (isClicking && now - lastParticleTime.current > 12) {
       if (particlesRef.current.length < 25) {
         const particle = createParticle(
@@ -204,7 +214,7 @@ export default function CustomCursor() {
     updateParticles()
 
     animationFrameRef.current = requestAnimationFrame(animate)
-  }
+  }, [isClicking, updateTrails, updateParticles])
 
   useEffect(() => {
     if (!supportsHover) return
@@ -223,7 +233,7 @@ export default function CustomCursor() {
         timestamp: Date.now(),
       })
 
-      // Limit trail points to prevent memory issues
+      // Limit trail points to prevent memory leaks (max 30 points)
       if (trailPointsRef.current.length > 30) {
         trailPointsRef.current = trailPointsRef.current.slice(-30)
       }
@@ -292,18 +302,29 @@ export default function CustomCursor() {
       document.removeEventListener("mouseover", handleMouseEnter)
       document.removeEventListener("mouseout", handleMouseLeave)
 
+      // Cancel animation frame
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
 
-      // Clean up trails and particles
-      trailsRef.current.forEach((trail) => trail.element.remove())
-      particlesRef.current.forEach((particle) => particle.element.remove())
+      // Comprehensive cleanup with proper DOM removal
+      trailsRef.current.forEach((trail) => {
+        if (trail.element?.parentNode) {
+          trail.element.parentNode.removeChild(trail.element)
+        }
+      })
+      particlesRef.current.forEach((particle) => {
+        if (particle.element?.parentNode) {
+          particle.element.parentNode.removeChild(particle.element)
+        }
+      })
+
+      // Clear all references
       trailsRef.current = []
       particlesRef.current = []
       trailPointsRef.current = []
     }
-  }, [supportsHover, isClicking])
+  }, [supportsHover, animate])
 
   // Don't render on touch devices
   if (!supportsHover) return null

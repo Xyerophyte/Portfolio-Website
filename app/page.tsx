@@ -15,9 +15,15 @@ import TargetCursor from "@/components/target-cursor"
 
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false)
+  const [resumeAvailable, setResumeAvailable] = useState<boolean | null>(null)
 
   useEffect(() => {
     setMounted(true)
+
+    // Check resume availability once on mount (cache the result)
+    fetch('/resume/harsh-chavan-resume.pdf', { method: 'HEAD' })
+      .then(response => setResumeAvailable(response.ok))
+      .catch(() => setResumeAvailable(false))
   }, [])
 
   // Return a loading state instead of null to avoid hydration issues
@@ -159,37 +165,35 @@ export default function Portfolio() {
     },
   ]
 
-  // Smooth scroll function
+  // Smooth scroll function with proper error handling
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+    try {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
+      } else {
+        console.warn(`Element with id "${sectionId}" not found`)
+      }
+    } catch (error) {
+      console.error("Error scrolling to section:", error)
     }
   }
 
-  // Add this function near the top of the component
+  // Optimized resume download with cached availability check
   const downloadResume = () => {
     try {
-      // Create a link to your resume file
+      // Check cached availability state
+      if (resumeAvailable === false) {
+        alert("Resume file is not available. Please contact me directly at harshabasaheb1@gmail.com")
+        return
+      }
+
+      // Create and trigger download
       const link = document.createElement("a")
       link.href = "/resume/harsh-chavan-resume.pdf"
       link.download = "Harsh-Chavan-Resume.pdf"
       link.target = "_blank"
-      
-      // Check if file exists by trying to fetch it
-      fetch(link.href, { method: "HEAD" })
-        .then((response) => {
-          if (response.ok) {
-            link.click()
-          } else {
-            // Resume file doesn't exist, show message to user
-            alert("Resume file is not available. Please contact me directly at harshabasaheb1@gmail.com")
-          }
-        })
-        .catch(() => {
-          // Network error or file doesn't exist
-          alert("Resume file is not available. Please contact me directly at harshabasaheb1@gmail.com")
-        })
+      link.click()
     } catch (error) {
       console.error("Error downloading resume:", error)
       alert("Unable to download resume. Please contact me directly at harshabasaheb1@gmail.com")
@@ -477,7 +481,7 @@ export default function Portfolio() {
         <ScrollReveal direction="fade" duration={0.8}>
           <footer className="border-t border-gray-800 py-8 px-6 backdrop-blur-sm">
             <div className="max-w-6xl mx-auto text-center text-gray-400">
-              <p>&copy; 2024 Harsh Chavan. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} Harsh Chavan. All rights reserved.</p>
             </div>
           </footer>
         </ScrollReveal>

@@ -28,6 +28,7 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const elementRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
     const element = elementRef.current
@@ -57,6 +58,11 @@ export default function ScrollReveal({
 
     // Set initial transform
     gsap.set(element, getInitialTransform())
+
+    // Cleanup previous observer if exists
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -95,12 +101,20 @@ export default function ScrollReveal({
       },
     )
 
+    observerRef.current = observer
     observer.observe(element)
 
     return () => {
-      observer.disconnect()
+      // Kill any ongoing GSAP animations to prevent memory leaks
+      gsap.killTweensOf(element)
+
+      // Disconnect observer
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+        observerRef.current = null
+      }
     }
-  }, [direction, delay, duration, distance, threshold, triggerOnce])
+  }, [direction, delay, duration, distance, threshold, triggerOnce, isVisible])
 
   return (
     <div ref={elementRef} className={className}>

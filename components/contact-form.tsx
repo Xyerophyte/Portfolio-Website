@@ -63,7 +63,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Client-side validation
     const validationError = validateForm()
     if (validationError) {
@@ -77,13 +77,20 @@ export default function ContactForm() {
     setStatus({ type: "loading", message: "Sending message..." })
 
     try {
+      // Create abort controller for timeout (10 seconds)
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000)
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        signal: controller.signal, // Add abort signal for timeout
       })
+
+      clearTimeout(timeoutId) // Clear timeout if request completes
 
       const data = await response.json()
 
@@ -100,11 +107,26 @@ export default function ContactForm() {
         })
       }
     } catch (error) {
-      console.error("Contact form error:", error)
-      setStatus({
-        type: "error",
-        message: "Network error. Please check your connection and try again, or contact me directly at harshabasaheb1@gmail.com",
-      })
+      // Handle timeout and network errors
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          setStatus({
+            type: "error",
+            message: "Request timed out. Please try again or contact me directly at harshabasaheb1@gmail.com",
+          })
+        } else {
+          console.error("Contact form error:", error)
+          setStatus({
+            type: "error",
+            message: "Network error. Please check your connection and try again, or contact me directly at harshabasaheb1@gmail.com",
+          })
+        }
+      } else {
+        setStatus({
+          type: "error",
+          message: "An unexpected error occurred. Please try again or contact me directly at harshabasaheb1@gmail.com",
+        })
+      }
     }
   }
 
