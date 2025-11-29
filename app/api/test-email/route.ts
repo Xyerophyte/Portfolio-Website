@@ -58,11 +58,14 @@ This is a test email from your portfolio website contact form.
     )
   } catch (error) {
     console.error("❌ Test email failed:", error)
-    
+
+    // Get error message safely
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+
     return NextResponse.json(
       {
         error: "Failed to send test email",
-        details: process.env.NODE_ENV === "development" ? error.message : "Check your API key and try again",
+        details: process.env.NODE_ENV === "development" ? errorMessage : "Check your API key and try again",
         status: "error",
       },
       { status: 500 },
