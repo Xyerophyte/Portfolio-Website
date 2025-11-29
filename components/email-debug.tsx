@@ -21,7 +21,8 @@ export default function EmailDebug() {
       const data = await response.json()
       setResult(data)
     } catch (error) {
-      setResult({ success: false, error: error.message })
+      const errorMessage = error instanceof Error ? error.message : "Unknown error"
+      setResult({ success: false, error: errorMessage })
     } finally {
       setTesting(false)
     }
