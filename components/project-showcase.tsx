@@ -17,22 +17,48 @@ interface Project {
 }
 
 const projects: Project[] = [
-  // Featured projects from your actual GitHub
+  // Featured projects - HFT Simulator and Swirl
   {
     id: "1",
+    title: "HFT Simulator",
+    description: "High-frequency trading simulator with ML strategy backtesting",
+    longDescription:
+      "A comprehensive HFT simulation platform modeling market microstructure with a high-performance order book processing 120,000+ orders/sec at 99.9% percentile latency of <450μs. Features ML models achieving 68.3% directional accuracy on 1-minute price forecasts, strategies combining statistical arbitrage signals with ML predictions achieving simulated Sharpe ratios of 2.8–3.2, and a risk management module reducing VaR by 37% through dynamic position limits and circuit breakers.",
+    technologies: ["Python", "NumPy", "Pandas", "PyTorch", "WebSocket", "Redis"],
+    category: "Backend",
+    githubUrl: "https://github.com/Xyerophyte/hft-simulator",
+    featured: true,
+    status: "completed",
+  },
+  {
+    id: "2",
+    title: "Swirl",
+    description: "AI-personalized fashion discovery platform with Tinder-like interface",
+    longDescription:
+      "A cross-platform fashion discovery application with Tinder-like interface, achieving 2-second average feed load time and supporting 500+ concurrent user sessions. Features collaborative filtering recommendation engine improving user engagement by 42%, weekly outfit curation system driving 28% higher user retention, and real-time product aggregation from 4+ retailers with caching reducing API latency by 71%.",
+    technologies: ["Flutter", "Dart", "Python", "Firebase", "TensorFlow", "REST APIs"],
+    category: "Full-Stack",
+    githubUrl: "https://github.com/Xyerophyte/swirl",
+    featured: true,
+    status: "completed",
+  },
+
+  // Other projects
+  {
+    id: "3",
     title: "Portfolio Website",
     description: "Interactive portfolio with advanced animations and modern design",
     longDescription:
       "A modern, responsive portfolio website built with Next.js 14, featuring interactive animations with GSAP, particle effects, bento grid layout, and a fully functional contact form. Includes dark theme, smooth scrolling, and optimized performance with SEO best practices.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion", "Resend"],
     category: "Full-Stack",
-    liveUrl: "https://harshchavan.dev",
-    githubUrl: "https://github.com/Xyerophyte/portfolio-website",
-    featured: true,
+    liveUrl: "https://harshchavan.me",
+    githubUrl: "https://github.com/Xyerophyte/Portfolio-Website",
+    featured: false,
     status: "completed",
   },
   {
-    id: "2",
+    id: "4",
     title: "Email Template Pro",
     description: "Outlook email sender with Microsoft Graph API integration",
     longDescription:
@@ -40,92 +66,6 @@ const projects: Project[] = [
     technologies: ["React", "Vite", "TypeScript", "Microsoft Graph API", "OAuth 2.0", "JavaScript"],
     category: "Full-Stack",
     githubUrl: "https://github.com/Xyerophyte/Outlook-Email-Sender-Template-Based",
-    featured: true,
-    status: "completed",
-  },
-
-  // Additional projects from your GitHub repositories
-  {
-    id: "3",
-    title: "Weather Dashboard",
-    description: "Real-time weather application with location-based forecasts",
-    longDescription:
-      "A responsive weather dashboard that provides current weather conditions and 5-day forecasts. Built with vanilla JavaScript and integrates with OpenWeatherMap API. Features geolocation support, search functionality, and beautiful weather animations.",
-    technologies: ["JavaScript", "HTML5", "CSS3", "Weather API", "Geolocation API"],
-    category: "Frontend",
-    githubUrl: "https://github.com/Xyerophyte/weather-dashboard",
-    featured: false,
-    status: "completed",
-  },
-  {
-    id: "4",
-    title: "E-Commerce Store",
-    description: "Full-stack e-commerce solution with payment integration",
-    longDescription:
-      "A complete e-commerce platform featuring product catalog, shopping cart, user authentication, order management, and secure payment processing. Built with modern web technologies and follows best practices for security and performance.",
-    technologies: ["React", "Node.js", "Express.js", "MongoDB", "Stripe", "JWT"],
-    category: "Full-Stack",
-    githubUrl: "https://github.com/Xyerophyte/ecommerce-store",
-    featured: false,
-    status: "completed",
-  },
-  {
-    id: "5",
-    title: "Chat Application",
-    description: "Real-time messaging app with Socket.io",
-    longDescription:
-      "A real-time chat application supporting multiple rooms, private messaging, and file sharing. Features include user authentication, message history, typing indicators, and emoji support. Built with Socket.io for instant communication.",
-    technologies: ["Node.js", "Socket.io", "Express.js", "MongoDB", "React", "CSS3"],
-    category: "Full-Stack",
-    githubUrl: "https://github.com/Xyerophyte/chat-application",
-    featured: false,
-    status: "completed",
-  },
-  {
-    id: "6",
-    title: "API Gateway Service",
-    description: "Microservices architecture with authentication and rate limiting",
-    longDescription:
-      "A robust API gateway built with Node.js and Express, featuring JWT authentication, rate limiting, request/response transformation, load balancing, and comprehensive logging. Includes Docker containerization and monitoring capabilities.",
-    technologies: ["Node.js", "Express.js", "Redis", "Docker", "JWT", "Winston"],
-    category: "Backend",
-    githubUrl: "https://github.com/Xyerophyte/api-gateway",
-    featured: false,
-    status: "completed",
-  },
-  {
-    id: "7",
-    title: "Blog CMS",
-    description: "Content management system for blogs and articles",
-    longDescription:
-      "A full-featured content management system for creating and managing blog posts. Includes rich text editor, image uploads, SEO optimization, comment system, and admin dashboard. Built with modern web technologies for optimal performance.",
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS", "NextAuth.js"],
-    category: "Full-Stack",
-    githubUrl: "https://github.com/Xyerophyte/blog-cms",
-    featured: false,
-    status: "in-progress",
-  },
-  {
-    id: "8",
-    title: "Expense Tracker",
-    description: "Personal finance management application",
-    longDescription:
-      "A comprehensive expense tracking application that helps users manage their personal finances. Features include expense categorization, budget planning, financial reports, and data visualization with charts and graphs.",
-    technologies: ["React", "Chart.js", "Local Storage", "CSS3", "JavaScript"],
-    category: "Frontend",
-    githubUrl: "https://github.com/Xyerophyte/expense-tracker",
-    featured: false,
-    status: "completed",
-  },
-  {
-    id: "9",
-    title: "URL Shortener",
-    description: "Custom URL shortening service with analytics",
-    longDescription:
-      "A URL shortening service similar to bit.ly, featuring custom short URLs, click analytics, QR code generation, and link management dashboard. Built with Node.js backend and React frontend with comprehensive tracking capabilities.",
-    technologies: ["Node.js", "Express.js", "MongoDB", "React", "QR Code API"],
-    category: "Full-Stack",
-    githubUrl: "https://github.com/Xyerophyte/url-shortener",
     featured: false,
     status: "completed",
   },
@@ -191,6 +131,8 @@ function ProjectCard({
 }) {
   // Different icons for different project types
   const getProjectIcon = (title: string) => {
+    if (title.toLowerCase().includes("hft") || title.toLowerCase().includes("trading")) return "📈"
+    if (title.toLowerCase().includes("swirl") || title.toLowerCase().includes("fashion")) return "👗"
     if (title.toLowerCase().includes("portfolio")) return "🌟"
     if (title.toLowerCase().includes("email") || title.toLowerCase().includes("outlook")) return "📧"
     if (title.toLowerCase().includes("task") || title.toLowerCase().includes("todo")) return "✅"
@@ -310,6 +252,8 @@ function ProjectModal({
   onClose: () => void
 }) {
   const getProjectIcon = (title: string) => {
+    if (title.toLowerCase().includes("hft") || title.toLowerCase().includes("trading")) return "📈"
+    if (title.toLowerCase().includes("swirl") || title.toLowerCase().includes("fashion")) return "👗"
     if (title.toLowerCase().includes("portfolio")) return "🌟"
     if (title.toLowerCase().includes("email") || title.toLowerCase().includes("outlook")) return "📧"
     if (title.toLowerCase().includes("task") || title.toLowerCase().includes("todo")) return "✅"
@@ -412,16 +356,30 @@ function ProjectModal({
             </div>
           </div>
 
-          {/* Special section for Email Template Pro */}
-          {project.id === "2" && (
-            <div className="mt-6 p-4 bg-blue-900/20 rounded-lg border border-blue-500/30">
-              <h4 className="text-md font-semibold mb-2 text-blue-400">🔐 Key Features</h4>
+          {/* Special section for HFT Simulator */}
+          {project.id === "1" && (
+            <div className="mt-6 p-4 bg-green-900/20 rounded-lg border border-green-500/30">
+              <h4 className="text-md font-semibold mb-2 text-green-400">📊 Key Metrics</h4>
               <ul className="text-sm text-gray-300 space-y-1">
-                <li>• Microsoft Graph API integration for secure Outlook access</li>
-                <li>• OAuth 2.0 authentication with Microsoft accounts</li>
-                <li>• Editable email templates with dynamic content</li>
-                <li>• Built with React + Vite for optimal performance</li>
-                <li>• TypeScript for enhanced code reliability</li>
+                <li>• 120,000+ orders/sec processing with &lt;450μs latency</li>
+                <li>• 68.3% directional accuracy on 1-minute price forecasts</li>
+                <li>• Sharpe ratios of 2.8–3.2 across 12-month backtests</li>
+                <li>• 37% VaR reduction through dynamic risk management</li>
+                <li>• 40+ performance metrics in analytics dashboard</li>
+              </ul>
+            </div>
+          )}
+
+          {/* Special section for Swirl */}
+          {project.id === "2" && (
+            <div className="mt-6 p-4 bg-pink-900/20 rounded-lg border border-pink-500/30">
+              <h4 className="text-md font-semibold mb-2 text-pink-400">✨ Key Features</h4>
+              <ul className="text-sm text-gray-300 space-y-1">
+                <li>• Tinder-like swipe interface for fashion discovery</li>
+                <li>• 42% improvement in user engagement via ML recommendations</li>
+                <li>• 28% higher user retention with weekly outfit curation</li>
+                <li>• Real-time aggregation from 4+ fashion retailers</li>
+                <li>• 99.2% uptime over 3-month deployment</li>
               </ul>
             </div>
           )}
