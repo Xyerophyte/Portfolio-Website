@@ -21,7 +21,7 @@ export default function Portfolio() {
     setMounted(true)
 
     // Check resume availability once on mount (cache the result)
-    fetch('/resume/harsh-chavan-resume.pdf', { method: 'HEAD' })
+    fetch('/resume/CV_Harsh_Chavan.pdf', { method: 'HEAD' })
       .then(response => setResumeAvailable(response.ok))
       .catch(() => setResumeAvailable(false))
   }, [])
@@ -190,8 +190,8 @@ export default function Portfolio() {
 
       // Create and trigger download
       const link = document.createElement("a")
-      link.href = "/resume/harsh-chavan-resume.pdf"
-      link.download = "Harsh-Chavan-Resume.pdf"
+      link.href = "/resume/CV_Harsh_Chavan.pdf"
+      link.download = "CV_Harsh_Chavan.pdf"
       link.target = "_blank"
       link.click()
     } catch (error) {
